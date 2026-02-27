@@ -624,9 +624,9 @@ var toolBarOnly = true;
             var dimStr = $('.currentAdaptiveView').attr('data-dim');
             var dim = dimStr ? dimStr.split('x') : { w: '0', h: '0' };
             var isDevice = dim[1] != '0' ? true : false;
-            var focusableTags = ["textarea", "input", "button", "select", "a"];
+            var focusableElements = ["textarea", "input", "button", "select"];
             if ((e.target !== iframeBody
-                && (iframeBody.contains(e.target) || e.target.isContentEditable || focusableTags.some(e.target.tagName.toLowerCase())))
+                && (iframeBody.contains(e.target) || tabbableElements.lastIndexOf(e.target.tagName.toLowerCase()) !== -1))
                 || isDevice
             ) {
                 return;

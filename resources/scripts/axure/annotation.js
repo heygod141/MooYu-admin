@@ -161,13 +161,11 @@ $axure.internal(function($ax) {
         dimensions.left = viewportLocation.left;
         dimensions.top = viewportLocation.top;
 
-        var parent = axObj.getParents(false, ['rdo', 'state', 'item'])[0];
-        var parentItem = axObj.getParents(false, ['item'])[0];
-        if (parent === parentItem) parent = undefined;
-        if (parent && parent.length > 0) {
-            var parentLocation = $ax('#' + parent).offsetLocation();
-            dimensions.left = dimensions.left - parentLocation.left;
-            dimensions.top = dimensions.top - parentLocation.top;
+        var parentRdo = axObj.getParents(false, ['rdo'])[0];
+        if(parentRdo && parentRdo.length > 0) {
+            var parentRdoLocation = $ax('#' + parentRdo).offsetLocation();
+            dimensions.left = dimensions.left - parentRdoLocation.left;
+            dimensions.top = dimensions.top - parentRdoLocation.top;
         }
 
         var size = axObj.size();
